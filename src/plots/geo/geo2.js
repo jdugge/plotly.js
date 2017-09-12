@@ -181,8 +181,8 @@ proto.updateProjection = function(fullLayout, geoLayout) {
         gs.l + gs.w * domain.x[0],
         gs.t + gs.h * (1 - domain.y[1])
     ], [
-        gs.l + gs.w * (domain.x[1] - domain.x[0]),
-        gs.t + gs.h * (domain.y[1] - domain.y[0])
+        gs.l + gs.w * domain.x[1],
+        gs.t + gs.h * (1 - domain.y[0]) 
     ]];
     var rangeBox = makeRangeBox(
         geoLayout.lonaxis.range,
@@ -298,8 +298,8 @@ proto.updateDims = function(fullLayout, geoLayout) {
     var b = this.bounds;
     var frameWidth = geoLayout.framewidth || 0;
 
-    var l = b[0][0];
-    var t = b[0][1];
+    var l = b[0][0] - frameWidth;
+    var t = b[0][1] - frameWidth;
     var w = b[1][0] - l + frameWidth;
     var h = b[1][1] - t + frameWidth;
 
